@@ -1,35 +1,45 @@
-# EX-NO14-HASH-ALGORITHM
+## Exp 14 : IMPLEMENTATION OF HASH ALGORITHM
+
 
 ## AIM:
-To implement HASH ALGORITHM
+
+To implement a simple hash algorithm in C to generate a hash value for a given message, demonstrating how hashing can be used for data integrity.
+
 
 ## ALGORITHM:
-
-1. Hash Algorithm is used to convert input data (message) into a fixed-size string, typically a hash value, which uniquely represents the original data.
-
-2. Initialization:
-   - Choose a hash function \( H \) (e.g., SHA-256, MD5, etc.).
-   - The message \( M \) to be hashed is input.
-
-3. Message Preprocessing:
-   - Break the message \( M \) into fixed-size blocks. If necessary, pad the message to make it compatible with the block size required by the hash function.
-   - For example, in SHA-256, the message is padded to ensure that its length is a multiple of 512 bits.
-
-4. Hash Calculation:
-   - Process the message block by block, applying the hash function \( H \) iteratively to produce an intermediate hash value.
-   - For SHA-256, each block is processed through a series of logical operations, bitwise manipulations, and modular additions.
-
-5. Output:
-   - After all blocks are processed, the final hash value (digest) is produced, which is a fixed-size output (e.g., 256-bit for SHA-256).
-   - The resulting hash is unique to the input message, meaning even a small change in the message will result in a completely different hash.
-
-6. Security: The strength of the hash algorithm lies in its collision resistance, ensuring that it is computationally infeasible to find two different messages that produce the same hash value.
+1.	Accept a message as input from the user.
+2.	Remove any newline character from the input message.
+3.	Initialize a hash value to zero.
+4.	For each character in the message:
+a.	Multiply the current hash value by 31 (a prime number).
+b.	Add the ASCII value of the current character to the hash.
+5.	After processing all characters, the final hash value is produced.
+6.	Display the generated hash value as the output.
 
 
-## Program:
+## PROGRAM:
+~~~
+#include <stdio.h>
 
+int main() {
+    char message[100];
+    unsigned long hash = 0;
+    int i;
 
-## Output:
+    printf("Enter a message: ");
+    scanf("%s", message);
 
-## Result:
-The program is executed successfully.
+    for (i = 0; message[i] != '\0'; i++) {
+        hash = hash * 31 + message[i];
+    }
+
+    printf("\nGenerated Hash Value: %lu\n", hash);
+    return 0;
+}
+~~~
+## OUTPUT:
+<img width="1920" height="1071" alt="{14CB874D-B89B-4C22-B9C6-A05DAC18FCB1}" src="https://github.com/user-attachments/assets/c139efb0-3770-4cac-a966-534faca2170a" />
+
+## RESULT:
+
+The hash algorithm was implemented successfully, generating a hash value for the input message to demonstrate data integrity verification.
